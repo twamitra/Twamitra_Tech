@@ -1,0 +1,38 @@
+{% load static %}
+
+<div class="serviceWrapper">
+    <header class="serviceHead">
+        <h3>Your Services</h3>
+        <div class="dropdown-container">
+            <button class="dropdown-button">Filter<i class="fas fa-caret-down"></i></button>
+            <div class="dropdown-content">
+                <a href="#">Completed</a>
+                <a href="#">Pending</a>
+            </div>
+        </div>
+    </header>
+    {% if appointments.count == 0 %}
+    <div class="NoServices">
+        <center>
+            <lord-icon src="https://cdn.lordicon.com/fkaukecx.json" trigger="loop"  delay="1000" colors="primary:#336699"
+                style="width:200px;height:200px">
+            </lord-icon>
+            <h3>You haven't applied for any service.</h3>
+        </center>
+    </div>
+    {% endif %}
+    <ul class="serviceList">
+        {% for appointment in appointments %}
+        <li class="serviceItem">
+            <h4 class="serviceName">{{appointment.serviceType.name}}</h4>
+            {% if appointent.is_completed == True %}
+            <p class="serviceStatus"><i class="fas fa-check"></i>Completed</p>
+            {% else %}
+            <p class="serviceStatus"><i class="fas fa-rotate"></i>Pending</p>
+            {% endif %}
+            <p class="providerName"><b>Provider name - </b>{{appointment.corporate.user.name}}</p>
+            <p class="viewDetails"><a href="{% url 'providerDetails' appointment.corporate.cid %}"><button class="btn btn-tertiary">View Details</button></a></p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load socialaccount %}
+
+{% block css %}
+  {% block head_css_site %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'stylesheet/profileForm.css' %}">
+  {% endblock head_css_site %}
+{% endblock css %}
+
+
+{% block content %}
+<div class="profileFormWrapper">
+    <form action="" method="POST" class="profileForm" enctype="multipart/form-data">
+        {% csrf_token %}
+        <center>
+            <h2>Profile Form</h2>
+        </center>
+        <div class="form-outline" data-mdb-input-init>
+            <input type="text" name="companyName" id="form12" class="form-control" value="{{data.companyName}}" required />
+            <label class="form-label" for="form12">Company Name</label>
+        </div>
+        <div class="form-outline" data-mdb-input-init>
+            <input type="text" name="experience" id="form12" class="form-control" value="{{data.experience}}" required />
+            <label class="form-label" for="form12">Experience</label>
+        </div> 
+        <div class="form-outline" data-mdb-input-init>
+            <input type="text" name="address" id="form12" class="form-control" value="{{data.address}}" required />
+            <label class="form-label" for="form12">Address</label>
+        </div> 
+        <div class="form-outline" data-mdb-input-init>
+            <input type="text" name="pincode" id="form12" class="form-control" value="{{data.pincode}}" required />
+            <label class="form-label" for="form12">Pincode</label>
+        </div> 
+        <div class="form-outline" data-mdb-input-init>
+            <input type="text" name="aadhar" id="form12" class="form-control" value="{{data.aadhar}}" required />
+            <label class="form-label" for="form12">Aadhar no</label>
+        </div>
+        <div class="form-outline" data-mdb-input-init>
+            <input type="text" name="pan" id="form12" class="form-control" value="{{data.pan}}" required />
+            <label class="form-label" for="form12">Pan no</label>
+        </div>
+
+        <div class="form-outline" data-mdb-input-init>
+            <input type="text" name="alternatePhone" id="form12" class="form-control" value="{{data.alternatePhone}}" required />
+            <label class="form-label" for="form12">Alternate mobile no</label>
+        </div>
+        <div>
+            <label class="form-label" for="customFile">Upload Profile Photo</label>
+            <input type="file" name="profilePic" class="form-control" id="customFile" value="{{data.profilePic}}" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+
+
+
+{% endblock %}
